@@ -1,12 +1,14 @@
+// import the React and RactDom libraries
 import React from 'react';
-import reactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 
-import './index.css';
-import App from './App';
+// Create a react component
+const App = () => {
+    return <div>Hi there</div>
+}
 
-reactDom.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById('root')
-);
+// Take the react component and show it on the screen
+ReactDOM.render(
+    <App />,
+    document.querySelector('#root')
+)
