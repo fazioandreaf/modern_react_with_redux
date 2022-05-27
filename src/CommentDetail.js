@@ -4,22 +4,22 @@ import faker from 'faker';
 
 
 // Create a react component
-const CommentDetail = () => {
+const CommentDetail = ({author, timeAgo, comment}) => {
     return (
-			<div className="comment">
-				<a href="/" className="avatar">
-					<img src={faker.image.avatar()} alt="avatar" />
+		<div className="comment">
+			<a href="/" className="avatar">
+				<img src={faker.image.avatar()} alt="avatar" />
+			</a>
+			<div className="content">
+				<a href="/" className="author">
+					{author}
 				</a>
-				<div className="content">
-					<a href="/" className="author">
-						Sam
-					</a>
-					<div className="metadata">
-						<span className="date">Today at 6:00PM</span>
-					</div>
-					<div className="text">Nice blog post!</div>
+				<div className="metadata">
+					<span className="date">{timeAgo}</span>
 				</div>
+				<div className="text">{comment}</div>
 			</div>
+		</div>
     )
 }
 
