@@ -1,21 +1,17 @@
 // import the React and RactDom libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import CommentDetail from './CommentDetail';
 
 // Create a react component
 const App = () => {
-    const buttonText = {text: 'Click me!'};
-
     return (
     <div>
-        <label className='label' htmlFor="name">
-            Enter name:
-        </label>
-        <input id='name' type='text' />
-        <button style={{backgroundColor: 'blue', color:'white'}}>
-            {buttonText.text}
-        </button>
+        <div className="ui container comments">
+			<CommentDetail />
+			<CommentDetail />
+			<CommentDetail />
+		</div>
     </div>
     )
 }
