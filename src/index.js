@@ -1,27 +1,42 @@
 // import the React and RactDom libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './style/App.css'
-import ApprovalCard from './ApprovalCard.js';
-import CommentDetail from './CommentDetail';
 
-// Create a react component
-const App = () => {
-    return (
-    <div>
-        <div className="ui container comments">
-            <ApprovalCard>
-			    <CommentDetail author="Sam" timeAgo="yesterday" content="Nice post!" />
-            </ApprovalCard>
-            <ApprovalCard>
-			    <CommentDetail author="Jane" timeAgo="1 month ago" content="Nice post!" />
-            </ApprovalCard>
-            <ApprovalCard>
-			    <CommentDetail author="Oscar" timeAgo="5 days ago" content="Nice post!" />
-            </ApprovalCard>
-		</div>
-    </div>
-    )
+
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+
+		// THIS IS THE ONLY TIME WE DO DIREC ASSIGNMET TO THIS.STATE
+		this.state = {
+			lat: null,
+			long: null,
+			errorMessage: null
+		};
+
+
+
+		window.navigator.geolocation.getCurrentPosition(
+			position => {
+				// we called sestate!!
+				this.setState({lat: position.coords.latitude});
+			},
+			err => {this.setState({errorMessage: err.message})}
+		);
+	}
+
+
+	// React says we have to define render!!
+    render() {
+		if (!this.state.errorMessage && this.state.lat ) {
+			return (<div> Latitude: {this.state.lat}</div>);
+		} else if (this.state.errorMessage && !this.state.lat) {
+			return (<div> Error: {this.state.errorMessage}</div>);
+		} else {
+			return (<div> Loading</div>);
+		}
+
+    }
 }
 
 // Take the react component and show it on the screen
