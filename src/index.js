@@ -1,21 +1,13 @@
 // import the React and RactDom libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import SeasonDisplay from './SeasonDisplay';
 
 class App extends React.Component {
-	constructor(props) {
-		super(props);
+	state = { lat: null, errorMessage: ''};
 
-		// THIS IS THE ONLY TIME WE DO DIREC ASSIGNMET TO THIS.STATE
-		this.state = {
-			lat: null,
-			long: null,
-			errorMessage: null
-		};
-
-
-
+	componentDidMount() {
+		console.log('My component did mount')
 		window.navigator.geolocation.getCurrentPosition(
 			position => {
 				// we called sestate!!
@@ -25,11 +17,14 @@ class App extends React.Component {
 		);
 	}
 
+	componentDidUpdate() {
+		console.log('My component did update')
+	}
 
 	// React says we have to define render!!
     render() {
 		if (!this.state.errorMessage && this.state.lat ) {
-			return (<div> Latitude: {this.state.lat}</div>);
+			return (<SeasonDisplay lat={this.state.lat} />);
 		} else if (this.state.errorMessage && !this.state.lat) {
 			return (<div> Error: {this.state.errorMessage}</div>);
 		} else {
