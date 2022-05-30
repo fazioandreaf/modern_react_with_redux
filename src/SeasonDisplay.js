@@ -1,5 +1,6 @@
 // import the React and RactDom libraries
 import React from 'react';
+import SeasonDisplayStyle from './SeasonDisplay.css';
 
 const seasonConfig = {
 	summer: {
@@ -28,10 +29,10 @@ const SeasonDisplay = ({lat}) => {
 
 
     return (
-		<div>
-			<i className={`${iconName} icon`} />
+		<div className={`season-display ${season}`}>
+			<i className={`massive ${iconName} icon icon-left`} />
 			<h1>{text}</h1>
-			<i className={`${iconName} icon`} />
+			<i className={`massive ${iconName} icon icon-right`} />
 		</div>
     )
 }
