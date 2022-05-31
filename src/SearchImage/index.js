@@ -1,7 +1,7 @@
 // import the React and RactDom libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './components/App';
 
 // Take the react component and show it on the screen
 ReactDOM.render(
