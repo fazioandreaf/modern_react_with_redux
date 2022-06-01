@@ -19,9 +19,22 @@ const Search = () => {
             setResults(data.query.search);
         }
 
-        if (term) {
-            search();
-        }
+        var timeoutID = setTimeout(() => {
+            if (term) {
+                search();
+            }
+        }, 500);
+
+        return () => {clearTimeout(timeoutID);}
+
+        // Classic method
+        // var timeoutID = setTimeout(() => {
+        //     clearTimeout(timeoutID);
+        //     if (term) {
+        //         search();
+        //     }
+        // }, 500);
+
     }, [term])
 
     const renderedResults = results.map(({title, snippet, pageid}) => {
