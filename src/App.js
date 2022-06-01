@@ -34,6 +34,23 @@ const options = [
     }
 ]
 
+const showAccordion = () => {
+    if (window.location.pathname === '/') {
+        return <Accordion items={items} />
+    }
+}
+
+const showList = () => {
+    if (window.location.pathname === '/list') {
+        return <Search />
+    }
+}
+
+const showTranslate = () => {
+    if (window.location.pathname === '/translate') {
+        return <Translate items={items} />
+    }
+}
 
 const App = () => {
     const [selected, setSelected] = useState(options[0])
@@ -49,10 +66,13 @@ const App = () => {
                     <Dropdown label='Select Colors' options={options} selected={selected} onSelectedChange={setSelected} />
                 </>
             } */}
-            <Translate />
-            {/* <Accordion items={items} /> */}
+            {/* <Translate /> */}
+            {showAccordion()}
+            {showList()}
+            {showTranslate()}
         </div>
     )
 }
+
 
 export default App
