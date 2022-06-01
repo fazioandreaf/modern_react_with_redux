@@ -4,6 +4,8 @@ import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
 import Translate from "./components/Translate";
 
+import Route from "./components/Route";
+
 const items = [
     {
         title:'What is React?',
@@ -67,9 +69,12 @@ const App = () => {
                 </>
             } */}
             {/* <Translate /> */}
-            {showAccordion()}
-            {showList()}
-            {showTranslate()}
+            <Route path='/'>
+                <Accordion items={items} />
+            </Route>
+            <Route path='/list'>
+                <Search />
+            </Route>
         </div>
     )
 }
