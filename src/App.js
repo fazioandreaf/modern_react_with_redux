@@ -3,6 +3,7 @@ import Accordion from "./components/Accordion";
 import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
 import Translate from "./components/Translate";
+import Header from "./components/Header";
 
 import Route from "./components/Route";
 
@@ -36,30 +37,13 @@ const options = [
     }
 ]
 
-const showAccordion = () => {
-    if (window.location.pathname === '/') {
-        return <Accordion items={items} />
-    }
-}
-
-const showList = () => {
-    if (window.location.pathname === '/list') {
-        return <Search />
-    }
-}
-
-const showTranslate = () => {
-    if (window.location.pathname === '/translate') {
-        return <Translate items={items} />
-    }
-}
-
 const App = () => {
     const [selected, setSelected] = useState(options[0])
     const [showDropdown, setShowDropdown] = useState(true)
 
     return (
         <div>
+            <Header />
             {/* <Search /> */}
             {/* {
                 showDropdown &&
